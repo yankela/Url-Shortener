@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shorteners</h1>
+<p>After creating your url shortener, you can access the link by adding your ID to the url
+   in your browser. For example, if your ID is 3, you can access it like
+    so: https://yankels-shurl.herokuapp.com/shorteners/3</p>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="1">Url</th>
+      <th colspan="1">Id</th>
+      <th colspan="1">Show</th>
+      <th colspan="1">Edit</th>
+      <th colspan="1">Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shorteners.each do |shortener| %>
+      <tr>
+        <td><%= shortener.original_url %></td>
+        <td><%= shortener.id %></td>
+        <td><%= link_to 'Show', shortener %></td>
+        <td><%= link_to 'Edit', edit_shortener_path(shortener) %></td>
+        <td><%= link_to 'Destroy', shortener, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shortener', new_shortener_path %>
